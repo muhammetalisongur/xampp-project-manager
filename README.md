@@ -6,7 +6,7 @@ A simple tool to manage your projects in XAMPP easily.
 
 ## What Does It Do?
 
-- Keep your projects in `C:\Users\username\source\repos` and access them from XAMPP
+- Keep your projects in `C:\Users\[username]\source\repos` and access them from XAMPP
 - Edit files, create new ones
 - Open projects in browser with one click
 - Switch between dark/light themes
@@ -60,11 +60,11 @@ A simple tool to manage your projects in XAMPP easily.
 
 ## Features
 
-✅ Keep projects outside htdocs
-✅ Built-in file editor
-✅ Dark mode support
-✅ Colored icons for file types
-✅ Quick access to phpMyAdmin
+- Keep projects outside htdocs
+- Built-in file editor
+- Dark mode support
+- Colored icons for file types
+- Quick access to phpMyAdmin
 
 ## Having Issues?
 
