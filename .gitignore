@@ -1,0 +1,47 @@
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Logs
+*.log
+error_log
+access_log
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+*~
+
+# PHP specific
+vendor/
+composer.phar
+
+# Project specific
+*.bat
+symlink_*.bat
+remove_*.bat
+
+# Test files
+test/
+tests/
+*.test.php
+
+# Config files with sensitive data (if any)
+config.local.php
+.env.local
