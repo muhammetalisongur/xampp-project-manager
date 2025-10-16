@@ -6,7 +6,7 @@ XAMPP'ta projelerinizi kolayca yönetmenizi sağlayan basit bir araç.
 
 ## Ne İşe Yarar?
 
-- Projelerinizi `C:\Users\kullanici\source\repos` klasöründe tutup, XAMPP'tan erişebilirsiniz
+- Projelerinizi `C:\Users\[kullanici]\source\repos` klasöründe tutup, XAMPP'tan erişebilirsiniz
 - Dosyalarınızı düzenleyebilir, yeni dosyalar oluşturabilirsiniz
 - Projelerinizi tek tıkla tarayıcıda açabilirsiniz
 - Karanlık/aydınlık tema seçeneği vardır
@@ -60,11 +60,11 @@ XAMPP'ta projelerinizi kolayca yönetmenizi sağlayan basit bir araç.
 
 ## Özellikler
 
-✅ Projelerinizi htdocs dışında tutabilirsiniz
-✅ Dosya düzenleyici var
-✅ Karanlık mod var
-✅ Dosya türlerine göre renkli iconlar
-✅ phpMyAdmin'e hızlı erişim
+- Projelerinizi htdocs dışında tutabilirsiniz
+- Dosya düzenleyici var
+- Karanlık mod var
+- Dosya türlerine göre renkli iconlar
+- phpMyAdmin'e hızlı erişim
 
 ## Sorun mu Var?
 
