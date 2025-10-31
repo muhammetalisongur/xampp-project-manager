@@ -9,7 +9,7 @@ A simple tool to manage your projects in XAMPP easily.
 - Keep your projects in `C:\Users\[username]\source\repos` and access them from XAMPP
 - Edit files, create new ones
 - Open projects in browser with one click
-- Switch between dark/light themes
+- Dark/light theme support (auto-detects system theme)
 
 ## Screenshots
 
@@ -62,7 +62,10 @@ A simple tool to manage your projects in XAMPP easily.
 
 - Keep projects outside htdocs
 - Built-in file editor
-- Dark mode support
+- Smart dark mode:
+  - Auto-detects system theme on first load
+  - Automatically updates when system theme changes
+  - Remembers your preference when manually toggled
 - Colored icons for file types
 - Quick access to phpMyAdmin
 

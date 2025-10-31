@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theme Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        [data-theme="light"] {
+            background-color: white;
+            color: black;
+        }
+
+        [data-theme="dark"] {
+            background-color: #1a1a1a;
+            color: white;
+        }
+
+        .info {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid currentColor;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px 5px;
+        }
+
+        .status {
+            margin-top: 20px;
+            padding: 10px;
+            background: rgba(0, 123, 255, 0.1);
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Theme Detection Test</h1>
+
+    <div class="info">
+        <h2>Current Status:</h2>
+        <p>Current Theme: <strong id="currentTheme">-</strong></p>
+        <p>System Preference: <strong id="systemPref">-</strong></p>
+        <p>Saved Preference: <strong id="savedPref">-</strong></p>
+    </div>
+
+    <div>
+        <button onclick="toggleTheme()">Toggle Theme</button>
+        <button onclick="clearPreference()">Clear Saved Preference</button>
+        <button onclick="updateStatus()">Refresh Status</button>
+    </div>
+
+    <div class="status">
+        <h3>Test Instructions:</h3>
+        <ol>
+            <li>Open this page in your browser</li>
+            <li>Check if the theme matches your system preference on first load</li>
+            <li>Toggle your system theme (Windows: Settings > Personalization > Colors, Mac: System Preferences > General)</li>
+            <li>Clear saved preference and see if it follows system changes</li>
+            <li>Use Toggle Theme button to manually set preference</li>
+        </ol>
+    </div>
+
+    <script>
+        // Theme management functions (same as in index.php)
+        function initTheme() {
+            // First check if user has a saved preference
+            const savedTheme = localStorage.getItem('theme');
+
+            if (savedTheme) {
+                // Use saved preference if it exists
+                document.documentElement.setAttribute('data-theme', savedTheme);
+            } else {
+                // No saved preference, check system preference
+                const prefersDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+                const systemTheme = prefersDarkMode ? 'dark' : 'light';
+                document.documentElement.setAttribute('data-theme', systemTheme);
+                // Don't save to localStorage yet - let user make explicit choice
+            }
+
+            // Listen for system theme changes
+            if (window.matchMedia) {
+                const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+                mediaQuery.addEventListener('change', (e) => {
+                    // Only apply system changes if user hasn't set a preference
+                    if (!localStorage.getItem('theme')) {
+                        const newTheme = e.matches ? 'dark' : 'light';
+                        document.documentElement.setAttribute('data-theme', newTheme);
+                        updateStatus();
+                    }
+                });
+            }
+
+            updateStatus();
+        }
+
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateStatus();
+        }
+
+        function clearPreference() {
+            localStorage.removeItem('theme');
+            initTheme();
+            alert('Saved preference cleared! Theme will now follow system preference.');
+        }
+
+        function updateStatus() {
+            document.getElementById('currentTheme').textContent =
+                document.documentElement.getAttribute('data-theme') || 'not set';
+
+            const systemPref = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+                ? 'dark' : 'light';
+            document.getElementById('systemPref').textContent = systemPref;
+
+            document.getElementById('savedPref').textContent =
+                localStorage.getItem('theme') || 'none';
+        }
+
+        // Initialize theme on load
+        initTheme();
+    </script>
+</body>
+</html>

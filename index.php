@@ -2391,9 +2391,41 @@ function getHtdocsFolders() {
 
         // Theme management
         function initTheme() {
-            const savedTheme = localStorage.getItem('theme') || 'light';
-            document.documentElement.setAttribute('data-theme', savedTheme);
-            updateThemeIcon(savedTheme);
+            // First check if user has a saved preference
+            const savedTheme = localStorage.getItem('theme');
+
+            if (savedTheme) {
+                // Use saved preference if it exists
+                document.documentElement.setAttribute('data-theme', savedTheme);
+                updateThemeIcon(savedTheme);
+            } else {
+                // No saved preference, check system preference
+                const prefersDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+                const systemTheme = prefersDarkMode ? 'dark' : 'light';
+                document.documentElement.setAttribute('data-theme', systemTheme);
+                updateThemeIcon(systemTheme);
+                // Don't save to localStorage yet - let user make explicit choice
+            }
+
+            // Listen for system theme changes
+            if (window.matchMedia) {
+                const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+                mediaQuery.addEventListener('change', (e) => {
+                    // Only apply system changes if user hasn't set a preference
+                    if (!localStorage.getItem('theme')) {
+                        const newTheme = e.matches ? 'dark' : 'light';
+                        document.documentElement.setAttribute('data-theme', newTheme);
+                        updateThemeIcon(newTheme);
+
+                        // Update CodeMirror theme if editor is open
+                        if (editor) {
+                            const editorTheme = newTheme === 'dark' ? 'monokai' : 'default';
+                            editor.setOption('theme', editorTheme);
+                            $('#editorTheme').val(newTheme);
+                        }
+                    }
+                });
+            }
         }
 
         function toggleTheme() {

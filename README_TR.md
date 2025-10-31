@@ -9,7 +9,7 @@ XAMPP'ta projelerinizi kolayca yönetmenizi sağlayan basit bir araç.
 - Projelerinizi `C:\Users\[kullanici]\source\repos` klasöründe tutup, XAMPP'tan erişebilirsiniz
 - Dosyalarınızı düzenleyebilir, yeni dosyalar oluşturabilirsiniz
 - Projelerinizi tek tıkla tarayıcıda açabilirsiniz
-- Karanlık/aydınlık tema seçeneği vardır
+- Karanlık/aydınlık tema desteği (sistem temasını otomatik algılar)
 
 ## Ekran Görüntüleri
 
@@ -62,7 +62,10 @@ XAMPP'ta projelerinizi kolayca yönetmenizi sağlayan basit bir araç.
 
 - Projelerinizi htdocs dışında tutabilirsiniz
 - Dosya düzenleyici var
-- Karanlık mod var
+- Akıllı karanlık mod:
+  - İlk açılışta sistem temasını otomatik algılar
+  - Sistem teması değiştiğinde otomatik güncellenir
+  - Manuel tema seçimi yapıldığında tercihinizi hatırlar
 - Dosya türlerine göre renkli iconlar
 - phpMyAdmin'e hızlı erişim
 
